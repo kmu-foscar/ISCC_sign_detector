@@ -8,13 +8,13 @@ import csv
 import datetime
 
 def main():
-    cam = cv2.VideoCapture(1)
+    cam = cv2.VideoCapture(0)
     while True:
         ret, img = Color_Detector.operate(cam)
         if ret:
             img = cv2.resize(img, (32, 32), interpolation=cv2.INTER_AREA)
             dt= datetime.datetime.now()
-            imagename = ".\\image10\\7\\" + str(dt.month)+"-"+ str(dt.day)+"-"+ str(dt.hour)+"-"+ str(dt.minute)+"-"+ str(dt.second)+"-"+ str(dt.microsecond)+ ".jpg"
+            imagename = "./image20/7/" + str(dt.month)+"-"+ str(dt.day)+"-"+ str(dt.hour)+"-"+ str(dt.minute)+"-"+ str(dt.second)+"-"+ str(dt.microsecond)+ ".jpg"
             cv2.imwrite(imagename,img)
             print(imagename)
         if cv2.waitKey(1) == 27:

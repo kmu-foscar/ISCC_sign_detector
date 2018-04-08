@@ -5,7 +5,7 @@ import pickle
 from wand.image import Image
 import glob
 
-list_dir = ['./image/0','./image/1','./image/2','./image/3','./image/4','./image/5','./image/6']
+list_dir = ['./image20/0','./image20/1','./image20/2','./image20/3','./image20/4','./image20/5','./image20/6','/image20/7']
 features=[]
 labels=[]
 dic = {'features':[],'labels':[]}

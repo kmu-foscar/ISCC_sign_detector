@@ -13,7 +13,7 @@ inference_operation = tf.argmax(logits, 1)
 saver = tf.train.Saver()
 
 def main():
-    cam = cv2.VideoCapture(1)
+    cam = cv2.VideoCapture(0)
     with tf.Session() as sess:
         saver.restore(sess, tf.train.latest_checkpoint('.'))
         

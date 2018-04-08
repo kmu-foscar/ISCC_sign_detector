@@ -36,6 +36,6 @@ def MiniNet(x):
 
     # Fully Connected Layer
     #layer_fc3 = tf.contrib.layers.fully_connected(layer_fc2, 43, tf.nn.relu)
-    layer_fc3 = tf.contrib.layers.fully_connected(layer_fc2, 7, tf.nn.relu)
+    layer_fc3 = tf.contrib.layers.fully_connected(layer_fc2, 8, tf.nn.relu)
     logits = layer_fc3
     return logits

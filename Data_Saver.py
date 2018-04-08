@@ -4,7 +4,7 @@ import cv2
 import pickle
 from wand.image import Image
 
-list_dir = ['./image10/0','./image10/1','./image10/2','./image10/3','./image10/4','./image10/5','./image10/6']
+list_dir = ['./image20/0','./image20/1','./image20/2','./image20/3','./image20/4','./image20/5','./image20/6','./image20/7']
 
 features=[]
 labels=[]
