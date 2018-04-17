@@ -58,8 +58,6 @@ with tf.Session() as sess:
     axs = axs.ravel()
     for i in range(0, count):
         image = own_images[i]
-        ##
-        ##
         evaluated = inference_output[i]
 
         axs[i].axis('off')
