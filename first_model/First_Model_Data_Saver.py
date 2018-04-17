@@ -2,17 +2,16 @@ import os
 import numpy as np
 import cv2
 import pickle
-from wand.image import Image
 
-sign_image_dir = ['C:/Users/YuJiEun/Desktop/Sign-Classifier-Project/image/sign/0'
-    ,'C:/Users/YuJiEun/Desktop/Sign-Classifier-Project/image/sign/1'
-    ,'C:/Users/YuJiEun/Desktop/Sign-Classifier-Project/image/sign/2'
-    ,'C:/Users/YuJiEun/Desktop/Sign-Classifier-Project/image/sign/3'
-    ,'C:/Users/YuJiEun/Desktop/Sign-Classifier-Project/image/sign/4'
-    ,'C:/Users/YuJiEun/Desktop/Sign-Classifier-Project/image/sign/5'
-    ,'C:/Users/YuJiEun/Desktop/Sign-Classifier-Project/image/sign/6'
+sign_image_dir = ['../image/sign/0'
+    ,'../image/sign/1'
+    ,'../image/sign/2'
+    ,'../image/sign/3'
+    ,'../image/sign/4'
+    ,'../image/sign/5'
+    ,'../image/sign/6'
     ]
-none_image_dir=['C:/Users/YuJiEun/Desktop/Sign-Classifier-Project/image/none']
+none_image_dir=['../image/none']
 features=[]
 labels=[]
 dic = {'features':[],'labels':[]}

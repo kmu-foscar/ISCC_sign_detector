@@ -3,7 +3,7 @@
 import time
 from sklearn.utils import shuffle
 from Alexnet import * 
-from Data_Loader import *
+from First_Model_Data_Loader import *
 
 x = tf.placeholder(tf.float32, (None, 227, 227, 3))
 y = tf.placeholder(tf.int64, (None))
@@ -40,19 +40,19 @@ def evaluate(X_data, y_data):
     return total_accuracy / num_examples, total_loss / num_examples, inference_data
 
 with tf.Session() as sess:
-    print("Training with {} inputs...".format(len(X_training)))
+    print("Training with {} inputs...".format(len(X_train)))
     print()
     sess.run(tf.global_variables_initializer())
 
     for i in range(EPOCHS):
         start_time =  time.time()
-        num_examples = len(X_training)
-        X_training, y_training = shuffle(X_training, y_training)
+        num_examples = len(X_train)
+        X_training, y_training = shuffle(X_train, y_train)
         for offset in range(0, num_examples, BATCH_SIZE):
             end = offset + BATCH_SIZE
             batch_x, batch_y = X_training[offset:end], y_training[offset:end]
             sess.run(training_operation, feed_dict={x: batch_x, y: batch_y})
-        validation_accuracy, validation_loss, inference_data = evaluate(X_validation, y_validation)
+        validation_accuracy, validation_loss, inference_data = evaluate(X_training, y_training)
 
         if (i % 10 == 0):
             print("EPOCH {} ...".format(i+1))
@@ -62,5 +62,5 @@ with tf.Session() as sess:
             print()
 
             
-    saver.save(sess, './alexnet_checkpoint/alexnet')
+    saver.save(sess, './alexnet')
     print("Model saved")
