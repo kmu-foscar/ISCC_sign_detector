@@ -2,17 +2,17 @@
 ### Feel free to use as many code cells as needed.
 import time
 from sklearn.utils import shuffle
-from Alexnet import * 
+from Lenet import *
 from First_Model_Data_Loader import *
 
-x = tf.placeholder(tf.float32, (None, 227, 227, 3))
+x = tf.placeholder(tf.float32, (None, 64, 64, 3))
 y = tf.placeholder(tf.int64, (None))
 
-EPOCHS = 151
+EPOCHS = 200
 BATCH_SIZE = 128
 LEARNING_RATE = 0.0009
 
-logits = Alexnet(x)
+logits = LeNet(x)
 cross_entropy = tf.nn.sparse_softmax_cross_entropy_with_logits(logits=logits, labels=y)
 
 loss_operation = tf.reduce_mean(cross_entropy)
@@ -23,6 +23,12 @@ inference_operation = tf.argmax(logits, 1)
 correct_prediction = tf.equal(inference_operation, y)
 accuracy_operation = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
 saver = tf.train.Saver()
+
+config = tf.ConfigProto ( allow_soft_placement = True )
+config.gpu_options.allocator_type =  ' BFC '
+config.gpu_options.per_process_gpu_memory_fraction =  0.90
+config.gpu_options.allow_growth = True
+
 
 def evaluate(X_data, y_data):
     num_examples = len(X_data)
@@ -54,7 +60,7 @@ with tf.Session() as sess:
             sess.run(training_operation, feed_dict={x: batch_x, y: batch_y})
         validation_accuracy, validation_loss, inference_data = evaluate(X_training, y_training)
 
-        if (i % 10 == 0):
+        if (i % 100 == 0):
             print("EPOCH {} ...".format(i+1))
             print("Validation Accuracy = {:.3f}".format(validation_accuracy))
             print("Validation Loss = {:.3f}".format(validation_loss))

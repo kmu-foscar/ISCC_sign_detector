@@ -23,6 +23,7 @@ def Alexnet(x):
     layer_pooling1 = tf.nn.max_pool(batch_norm1, ksize=[1, 3, 3, 1], strides=[1, 2, 2, 1], padding='SAME')
 
     # Layer 2
+
     F_W_2 = tf.get_variable('W2',
                                shape=[5, 5, 96, 256],
                                initializer=tf.contrib.layers.variance_scaling_initializer(factor=2.0,

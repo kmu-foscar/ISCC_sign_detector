@@ -9,7 +9,7 @@ def MiniNet(x):
     # Hyperparameters
     mu = 0
     sigma = 0.1
-    size = 32
+    size = 64
     
     # Convolution and Pooling Layer
     F_W_1 = tf.Variable(tf.truncated_normal([5, 5, 1, int(size/2)], mean = mu, stddev = sigma)) # (height, width, input_depth, output_depth)
