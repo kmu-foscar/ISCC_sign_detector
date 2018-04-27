@@ -10,11 +10,12 @@ def LeNet(x):
     # Hyperparameters
     mu = 0
     sigma = 0.1
-    size = 64
+    size = 32
 
     # Convolution and Pooling Layer
-    F_W_1 = tf.Variable(tf.truncated_normal([5, 5, 3, int(size / 2)], mean=mu,
+    F_W_1 = tf.Variable(tf.truncated_normal([5, 5, 1, int(size / 2)], mean=mu,
                                             stddev=sigma))  # (height, width, input_depth, output_depth)
+    # 절단정규분포로부터의 난수값을 반환
     F_b_1 = tf.Variable(tf.zeros(int(size / 2)))  # (output_depth)
     layer_conv1 = tf.nn.bias_add(tf.nn.conv2d(x, F_W_1, strides=[1, 1, 1, 1], padding='VALID'), F_b_1)
     layer_activation1 = tf.nn.relu(layer_conv1)

@@ -7,12 +7,12 @@ import scipy.ndimage
 from sklearn.model_selection import train_test_split
 
 # convert to B/W
-#X_train_bw = np.array([cv2.cvtColor(image, cv2.COLOR_RGB2GRAY) for image in X_train])
-#X_test_bw = np.array([cv2.cvtColor(image, cv2.COLOR_RGB2GRAY) for image in X_test])
+X_train_bw = np.array([cv2.cvtColor(image, cv2.COLOR_RGB2GRAY) for image in X_train])
+X_test_bw = np.array([cv2.cvtColor(image, cv2.COLOR_RGB2GRAY) for image in X_test])
 
 # apply histogram equalization
-X_train_hst_eq = np.array([cv2.equalizeHist(image) for image in X_train])
-X_test_hst_eq = np.array([cv2.equalizeHist(image) for image in X_test])
+X_train_hst_eq = np.array([cv2.equalizeHist(image) for image in X_train_bw])
+X_test_hst_eq = np.array([cv2.equalizeHist(image) for image in X_test_bw])
 
 # reshape for conv layer
 X_train_reshaped = X_train_hst_eq[..., newaxis]
@@ -79,7 +79,7 @@ for class_index in range(len(sign_type)):
                 generated_labels.append(test_label)
 
 # append generated data to original data
-print( np.array(generated_features))
+#print( np.array(generated_features))
 X_train_augmented = np.append(np.array(X_train_normalized), np.array(generated_features), axis=0)
 y_train_augmented = np.append(np.array(y_train), np.array(generated_labels), axis=0)
 

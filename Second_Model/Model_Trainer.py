@@ -38,7 +38,8 @@ def evaluate(X_data, y_data):
     for offset in range(0, num_examples, BATCH_SIZE):
         end = offset + BATCH_SIZE
         batch_x, batch_y = X_data[offset:end], y_data[offset:end]
-        accuracy, loss, inference = sess.run([accuracy_operation, loss_operation, inference_operation], feed_dict={x: batch_x, y: batch_y})
+        accuracy, loss, inference = sess.run([accuracy_operation, loss_operation, inference_operation],
+                                             feed_dict={x: batch_x, y: batch_y})
         total_accuracy += (accuracy * len(batch_x))
         total_loss += (loss * len(batch_x))
         inference_data = np.append(inference_data, inference)

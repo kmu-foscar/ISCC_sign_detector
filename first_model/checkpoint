@@ -1,2 +1,2 @@
-model_checkpoint_path: "alexnet"
-all_model_checkpoint_paths: "alexnet"
+model_checkpoint_path: "lenet"
+all_model_checkpoint_paths: "lenet"
