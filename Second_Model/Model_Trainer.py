@@ -61,12 +61,12 @@ with tf.Session() as sess:
         validation_accuracy, validation_loss, inference_data = evaluate(X_validation, y_validation)
 
         if (i % 100 == 0):
-            print("EPOCH {} ...".format(i+1))
+            print("EPOCH {} ...".format(i))
             print("Validation Accuracy = {:.3f}".format(validation_accuracy))
             print("Validation Loss = {:.3f}".format(validation_loss))
             print("Time Taken = {:.2f} sec".format(time.time() - start_time))
             print()
-            saver.save(sess, '.\lenet')
+            saver.save(sess, '.\second_lenet')
 
             
     #saver.save(sess, '.\lenet')
