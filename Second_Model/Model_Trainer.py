@@ -11,13 +11,13 @@ import tensorflow as tf
 x = tf.placeholder(tf.float32, (None, 32, 32, 1))
 y = tf.placeholder(tf.int64, (None))
 
-EPOCHS = 10000
+EPOCHS = 1000
 BATCH_SIZE = 128
 #LEARNING_RATE = 0.00006
 #LEARNING_RATE = 0.0009
 LEARNING_RATE = 0.000009
 
-logits = MiniNet(x)
+logits, param_list = MiniNet(x)
 cross_entropy = tf.nn.sparse_softmax_cross_entropy_with_logits(logits=logits, labels=y)
 
 loss_operation = tf.reduce_mean(cross_entropy)
@@ -27,7 +27,6 @@ training_operation = optimizer.minimize(loss_operation)
 inference_operation = tf.argmax(logits, 1)
 correct_prediction = tf.equal(inference_operation, y)
 accuracy_operation = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
-saver = tf.train.Saver()
 
 def evaluate(X_data, y_data):
     num_examples = len(X_data)
@@ -66,6 +65,7 @@ with tf.Session() as sess:
             print("Validation Loss = {:.3f}".format(validation_loss))
             print("Time Taken = {:.2f} sec".format(time.time() - start_time))
             print()
+            saver = tf.train.Saver(param_list)
             saver.save(sess, '.\second_lenet')
 
             
