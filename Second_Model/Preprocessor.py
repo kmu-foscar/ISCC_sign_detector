@@ -11,8 +11,12 @@ X_train_bw = np.array([cv2.cvtColor(image, cv2.COLOR_RGB2GRAY) for image in X_tr
 X_test_bw = np.array([cv2.cvtColor(image, cv2.COLOR_RGB2GRAY) for image in X_test])
 
 # apply histogram equalization
+'''
 X_train_hst_eq = np.array([cv2.equalizeHist(image) for image in X_train_bw])
 X_test_hst_eq = np.array([cv2.equalizeHist(image) for image in X_test_bw])
+'''
+X_train_hst_eq = X_train_bw
+X_test_hst_eq = X_test_bw
 
 # reshape for conv layer
 X_train_reshaped = X_train_hst_eq[..., newaxis]

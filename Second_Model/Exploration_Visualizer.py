@@ -26,10 +26,15 @@ for i in range(0, count*3, 3):
     axs[i+1].imshow(bw, cmap='gray')
     axs[i+1].set_title("B/W")
 
-    equ = cv2.equalizeHist(bw)
+    bw = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
+    axs[i+2].axis('off')
+    axs[i+2].imshow(bw, cmap='gray')
+    axs[i+2].set_title("B/W")
+
+    '''equ = cv2.equalizeHist(bw)
     axs[i+2].axis('off')
     axs[i+2].imshow(equ, cmap='gray')
-    axs[i+2].set_title("Histogram Equalized")
+    axs[i+2].set_title("Histogram Equalized")'''
 
 # plotting the count of each sign
 
