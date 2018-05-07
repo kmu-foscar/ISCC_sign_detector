@@ -1,2 +1,0 @@
-model_checkpoint_path: "second_lenet"
-all_model_checkpoint_paths: "second_lenet"
